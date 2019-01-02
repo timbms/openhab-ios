@@ -112,8 +112,8 @@ class OpenHABSettingsViewController: UITableViewController, OpenHABAppDataDelega
         if indexPath.section == 1 && indexPath.row == 2 {
             print("Clearing image cache")
             let imageCache = SDImageCache.shared()
-            imageCache.clearMemory()
-            imageCache.clearDisk()
+            imageCache?.clearMemory()
+            imageCache?.clearDisk()
         }
     }
 
@@ -188,7 +188,7 @@ class OpenHABSettingsViewController: UITableViewController, OpenHABAppDataDelega
 
     func appData() -> OpenHABDataObject? {
         let theDelegate = UIApplication.shared.delegate as? OpenHABAppDataDelegate?
-        return theDelegate?.appData()
+        return theDelegate??.appData()
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -2,6 +2,10 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 #import <NKOColorPickerView/NKOColorPickerView.h>
+#import "OpenHABAppDataDelegate.h"
+#import "OpenHABDataObject.h"
+
+
 
 // -----------------------------------------------------------------------------
 // Begin Swiftify generated imports
