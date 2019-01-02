@@ -22,12 +22,18 @@
 #import "OpenHABItem.h"
 #import "OpenHABWidget.h"
 #import "OpenHABWidgetMapping.h"
+#import "Reachability+URL.h"
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import <SDWebImage/SDWebImageDownloader.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SystemConfiguration/SCNetworkReachability.h>
 #import <UIKit/UIKit.h>
+#import <arpa/inet.h>
+#import <netdb.h>
+#import <netinet/in.h>
 #import <objc/runtime.h>
+#import <sys/socket.h>
 
 // End Swiftify generated imports
 // -----------------------------------------------------------------------------
