@@ -16,26 +16,26 @@ class ChartUITableViewCell: ImageUITableViewCell {
         widgetImage = viewWithTag(801) as? UIImageView
         var chartUrl: String
         let random = Int(arc4random()) % 1000
-        if (widget.item.type == "GroupItem") || (widget.item.type == "Group") {
-            chartUrl = "\(baseUrl)/chart?groups=\(widget.item.name)&period=\(widget.period)&random=\(random)"
+        if (widget?.item.type == "GroupItem") || (widget?.item.type == "Group") {
+            chartUrl = "\(baseUrl)/chart?groups=\(widget?.item.name)&period=\(widget?.period)&random=\(random)"
         } else {
-            chartUrl = "\(baseUrl)/chart?items=\(widget.item.name)&period=\(widget.period)&random=\(random)"
+            chartUrl = "\(baseUrl)/chart?items=\(widget?.item.name)&period=\(widget?.period)&random=\(random)"
         }
-        if widget.service != nil && widget.service.count > 0 {
-            chartUrl = "\(chartUrl)&service=\(widget.service)"
+        if widget?.service != nil && (widget?.service.count)! > 0 {
+            chartUrl = "\(chartUrl)&service=\(widget?.service)"
         }
         print("Chart url \(chartUrl)")
-        if widget.image == nil {
+        if widget?.image == nil {
             widgetImage?.sd_setImage(with: URL(string: chartUrl), placeholderImage: nil, options: SDWebImageOptions.cacheMemoryOnly, completed: { image, error, cacheType, imageURL in
                 // NSLog(@"Image load complete %f %f", self.widgetImage.image.size.width, self.widgetImage.image.size.height);
-                self.widget.image = image
+                self.widget?.image = image
                 self.widgetImage?.frame = self.contentView.frame
                 if self.delegate != nil {
                     self.delegate?.didLoadImageOf(self) 
                 }
             })
         } else {
-            widgetImage?.image = widget.image
+            widgetImage?.image = widget?.image
         }
     }
 }

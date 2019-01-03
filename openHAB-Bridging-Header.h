@@ -18,7 +18,7 @@
 // • Add `@class MySwiftClass` to your .h files that depend on the Swift code;
 // • No need to import the Swift Bridging Header (`openHAB-Swift.h`), since it's already being imported from the .pch file.
 
-#import "GenericUITableViewCell.h"
+//#import "GenericUITableViewCell.h"
 #import "OpenHABItem.h"
 #import "OpenHABWidget.h"
 #import "OpenHABWidgetMapping.h"

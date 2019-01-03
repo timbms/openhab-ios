@@ -14,14 +14,14 @@ class FrameUITableViewCell: GenericUITableViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        textLabel = viewWithTag(100) as? UILabel
+        //textLabel = viewWithTag(100) as? UILabel
         selectionStyle = UITableViewCell.SelectionStyle.none
         separatorInset = UIEdgeInsets.zero
     
     }
 
     override func displayWidget() {
-        textLabel?.text = widget.label.uppercased()
+        textLabel?.text = widget?.label.uppercased()
         contentView.sizeToFit()
     }
 

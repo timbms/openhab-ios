@@ -20,15 +20,15 @@ class SliderUITableViewCell: GenericUITableViewCell {
     }
 
     override func displayWidget() {
-        textLabel.text = widget.labelText()
-        let widgetValue = widget.item.stateAsFloat()
-        widgetSlider?.value = widgetValue / 100
+        textLabel?.text = widget?.labelText()
+        let widgetValue = widget?.item.stateAsFloat()
+        widgetSlider?.value = widgetValue! / 100
         widgetSlider?.addTarget(self, action: #selector(SliderUITableViewCell.sliderDidEndSliding(_:)), for: [.touchUpInside, .touchUpOutside])
     }
 
     @objc func sliderDidEndSliding (_ sender: UISlider) { //(_ notification: Notification?) {
         print("Slider new value = \(widgetSlider?.value ?? 0.0)")
         let intValue = Int((widgetSlider?.value ?? 0.0) * 100)
-        widget.sendCommand("\(intValue)")
+        widget!.sendCommand("\(intValue)")
     }
 }

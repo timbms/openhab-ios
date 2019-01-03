@@ -20,14 +20,14 @@ class SwitchUITableViewCell: GenericUITableViewCell {
     }
 
     override func displayWidget() {
-        textLabel.text = widget.labelText()
-        var state = widget.state
+        textLabel?.text = widget?.labelText()
+        var state = widget?.state
         //if state is nil or empty using the item state ( OH 1.x compatability )
         if state?.count == 0 {
-            state = widget.item.state
+            state = widget?.item.state
         }
-        if widget.labelValue() != nil {
-            detailTextLabel?.text = widget.labelValue()
+        if widget?.labelValue() != nil {
+            detailTextLabel?.text = widget?.labelValue()
         } else {
             detailTextLabel?.text = nil
         }
@@ -43,10 +43,10 @@ class SwitchUITableViewCell: GenericUITableViewCell {
     @objc func switchChange(_ sender: Any?) {
         if widgetSwitch?.isOn != nil {
             print("Switch to ON")
-            widget.sendCommand("ON")
+            widget?.sendCommand("ON")
         } else {
             print("Switch to OFF")
-            widget.sendCommand("OFF")
+            widget?.sendCommand("OFF")
         }
     }
 }

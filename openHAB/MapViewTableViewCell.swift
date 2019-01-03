@@ -11,8 +11,8 @@ import MapKit
 
 class MapViewTableViewCell: GenericUITableViewCell {
     private var mapView: MKMapView!
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         mapView = MKMapView(frame: CGRect.zero)
@@ -33,8 +33,8 @@ class MapViewTableViewCell: GenericUITableViewCell {
     }
 
     func setWidget(_ widget: OpenHABWidget?) {
-        let oldLocationCoordinate: CLLocationCoordinate2D = self.widget.coordinate
-        let oldLocationTitle = self.widget.title
+        let oldLocationCoordinate: CLLocationCoordinate2D = (self.widget?.coordinate)!
+        let oldLocationTitle = self.widget?.title
         let newLocationCoordinate: CLLocationCoordinate2D? = widget?.coordinate
         let newLocationTitle = widget?.title
 

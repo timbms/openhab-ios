@@ -37,12 +37,12 @@ class ColorPickerUITableViewCell: GenericUITableViewCell {
     }
 
     override func displayWidget() {
-        textLabel.text = widget.labelText()
-        colorButton?.backgroundColor = widget.item.stateAsUIColor()
+        textLabel?.text = widget?.labelText()
+        colorButton?.backgroundColor = widget?.item.stateAsUIColor()
     }
 
     @objc func upButtonPressed() {
-        widget.sendCommand("ON")
+        widget?.sendCommand("ON")
     }
 
     @objc func colorButtonPressed() {
@@ -52,6 +52,6 @@ class ColorPickerUITableViewCell: GenericUITableViewCell {
     }
 
     @objc func downButtonPressed() {
-        widget.sendCommand("OFF")
+        widget?.sendCommand("OFF")
     }
 }

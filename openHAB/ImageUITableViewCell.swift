@@ -32,15 +32,15 @@ class ImageUITableViewCell: GenericUITableViewCell {
             widgetImage?.image = widget?.image
         }
         // If widget have a refresh rate configured, schedule an image update timer
-        if widget.refresh != nil && refreshTimer == nil {
-            let refreshInterval = TimeInterval(widget.refresh.floatValue / 1000)
+        if widget?.refresh != nil && refreshTimer == nil {
+            let refreshInterval = TimeInterval((widget?.refresh.floatValue)! / 1000)
             refreshTimer = Timer.scheduledTimer(timeInterval: refreshInterval, target: self, selector: #selector(ImageUITableViewCell.refreshImage(_:)), userInfo: nil, repeats: true)
         }
     }
 
     func loadImage() {
         let random = Int(arc4random()) % 1000
-        widgetImage?.sd_setImage(with: URL(string: "\(widget.url)&random=\(random)"), placeholderImage: nil, options: SDWebImageOptions.cacheMemoryOnly, completed: { image, error, cacheType, imageURL in
+        widgetImage?.sd_setImage(with: URL(string: "\(widget?.url)&random=\(random)"), placeholderImage: nil, options: SDWebImageOptions.cacheMemoryOnly, completed: { image, error, cacheType, imageURL in
             self.widget?.image = image
             self.widgetImage?.frame = self.contentView.frame
             if self.delegate != nil {
@@ -51,7 +51,7 @@ class ImageUITableViewCell: GenericUITableViewCell {
 
     @objc func refreshImage(_ timer: Timer?) {
         let random = Int(arc4random()) % 1000
-        widgetImage?.sd_setImage(with: URL(string: "\(widget.url)&random=\(random)"), placeholderImage: widgetImage?.image, options: SDWebImageOptions.cacheMemoryOnly, completed: { image, error, cacheType, imageURL in
+        widgetImage?.sd_setImage(with: URL(string: "\(widget?.url)&random=\(random)"), placeholderImage: widgetImage?.image, options: SDWebImageOptions.cacheMemoryOnly, completed: { image, error, cacheType, imageURL in
             self.widget?.image = image
             if self.delegate != nil {
                 self.delegate?.didLoadImageOf(self)

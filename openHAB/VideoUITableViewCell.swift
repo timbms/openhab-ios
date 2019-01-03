@@ -13,7 +13,7 @@ class VideoUITableViewCell: GenericUITableViewCell {
     var videoPlayer: MPMoviePlayerController?
 
     override func displayWidget() {
-        print("Video url = \(widget.url)")
+        print("Video url = \(widget?.url)")
         //    videoPlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:widget.url]];
         //    videoPlayer.view.frame = self.contentView.bounds;
         //    [self.contentView addSubview:videoPlayer.view];

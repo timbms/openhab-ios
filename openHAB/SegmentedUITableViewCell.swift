@@ -20,26 +20,26 @@ class SegmentedUITableViewCell: GenericUITableViewCell {
     }
 
     override func displayWidget() {
-        textLabel.text = widget.labelText()
+        textLabel?.text = widget?.labelText()
         widgetSegmentedControl?.apportionsSegmentWidthsByContent = true
         widgetSegmentedControl?.removeAllSegments()
         widgetSegmentedControl?.apportionsSegmentWidthsByContent = true
         
         for mapping: OpenHABWidgetMapping? in widget?.mappings as? [OpenHABWidgetMapping?] ?? []  {
             if let mapping = mapping {
-                widgetSegmentedControl?.insertSegment(withTitle: mapping.label, at: widget.mappings.index(of: mapping), animated: false)
+                widgetSegmentedControl?.insertSegment(withTitle: mapping.label, at: (widget?.mappings.index(of: mapping))!, animated: false)
             }
         }
-        widgetSegmentedControl?.selectedSegmentIndex = Int(widget.mappingIndex(byCommand: widget.item.state))
+        widgetSegmentedControl?.selectedSegmentIndex  = Int(widget?.mappingIndex(byCommand: widget?.item.state)!)
         widgetSegmentedControl?.addTarget(self, action: #selector(SegmentedUITableViewCell.pickOne(_:)), for: .valueChanged)
     }
 
     @objc func pickOne(_ sender: Any?) {
         let segmentedControl = sender as? UISegmentedControl
         print(String(format: "Segment pressed %ld", Int(segmentedControl?.selectedSegmentIndex ?? 0)))
-        if widget.mappings != nil {
-            let mapping = widget.mappings[segmentedControl?.selectedSegmentIndex ?? 0] as? OpenHABWidgetMapping
-            widget.sendCommand(mapping?.command)
+        if widget?.mappings != nil {
+            let mapping = widget?.mappings[segmentedControl?.selectedSegmentIndex ?? 0] as? OpenHABWidgetMapping
+            widget?.sendCommand(mapping?.command)
         }
     }
 }

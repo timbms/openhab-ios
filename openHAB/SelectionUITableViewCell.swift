@@ -15,11 +15,11 @@ class SelectionUITableViewCell: GenericUITableViewCell {
     }
 
     override func displayWidget() {
-        textLabel.text = widget.labelText()
-        let selectedMapping = widget.mappingIndex(byCommand: widget.item.state)
-        if selectedMapping != NSNotFound {
-            if let widgetMapping = widget?.mappings[Int(selectedMapping)] as? OpenHABWidgetMapping {
-                detailTextLabel.text = widgetMapping.label
+        textLabel?.text = widget?.labelText()
+        let selectedMapping = widget?.mappingIndex(byCommand: widget?.item.state)
+        if Int(selectedMapping!) != NSNotFound {
+            if let widgetMapping = widget?.mappings?[Int(selectedMapping!)] as? OpenHABWidgetMapping {
+                detailTextLabel?.text = widgetMapping.label
             }
         }
 

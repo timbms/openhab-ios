@@ -22,7 +22,7 @@ class WebUITableViewCell: GenericUITableViewCell, UIWebViewDelegate {
     }
 
     override func displayWidget() {
-        print("webview loading url \(widget.url)")
+        print("webview loading url \(widget?.url)")
         let prefs = UserDefaults.standard
         let openHABUsername = prefs.value(forKey: "username") as? String
         let openHABPassword = prefs.value(forKey: "password") as? String
@@ -30,7 +30,7 @@ class WebUITableViewCell: GenericUITableViewCell, UIWebViewDelegate {
         let authData: Data? = authStr.data(using: .ascii)
         let authValue = "Basic \(authData?.base64EncodedString(options: []) ?? "")"
         var mutableRequest: NSMutableURLRequest? = nil
-        if let url = URL(string: widget.url) {
+        if let url = URL(string: (widget?.url)!) {
             mutableRequest = NSMutableURLRequest(url: url)
         }
         mutableRequest?.setValue(authValue, forHTTPHeaderField: "Authorization")
