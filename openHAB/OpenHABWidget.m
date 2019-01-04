@@ -7,10 +7,7 @@
 //
 
 #import "OpenHABWidget.h"
-#import "OpenHABItem.h"
-#import "OpenHABLinkedPage.h"
 #import "GDataXMLNode.h"
-#import "OpenHABWidgetMapping.h"
 
 @implementation OpenHABWidget
 @synthesize widgetId, label, icon, type, url, period, minValue, maxValue, step, refresh, height, isLeaf, iconColor, labelcolor, valuecolor, service, item, linkedPage, text, mappings, delegate, image;

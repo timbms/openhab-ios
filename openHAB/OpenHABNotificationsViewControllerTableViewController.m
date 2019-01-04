@@ -8,11 +8,9 @@
 
 #import "OpenHABNotificationsViewControllerTableViewController.h"
 #import "OpenHABAppDataDelegate.h"
-#import "OpenHABDataObject.h"
 #import "NSMutableURLRequest+Auth.h"
 #import "AFNetworking.h"
 #import "AFRememberingSecurityPolicy.h"
-#import "OpenHABNotification.h"
 #import "NSDate+Helper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/SDWebImageDownloader.h>

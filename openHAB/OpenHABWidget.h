@@ -7,7 +7,10 @@
 //
 
 #import "NSObject+Data.h"
-#import "OpenHABItem.h"
+
+
+@class OpenHABItem;
+
 @import Foundation;
 @import MapKit;
 @class GDataXMLElement;

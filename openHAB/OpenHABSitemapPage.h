@@ -8,8 +8,9 @@
 
 #import "NSObject+Data.h"
 #import <Foundation/Foundation.h>
-#import "OpenHABWidget.h"
-#import "OpenHABItem.h"
+
+@class OpenHABItem;
+
 @class GDataXMLElement;
 
 @protocol OpenHABSitemapPageDelegate <NSObject>

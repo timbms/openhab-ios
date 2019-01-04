@@ -2,6 +2,8 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 #import <NKOColorPickerView/NKOColorPickerView.h>
+#import <GDataXML_HTML/GDataXMLNode.h>
+
 
 // -----------------------------------------------------------------------------
 // Begin Swiftify generated imports
@@ -19,9 +21,7 @@
 // • No need to import the Swift Bridging Header (`openHAB-Swift.h`), since it's already being imported from the .pch file.
 
 #import "GenericUITableViewCell.h"
-#import "OpenHABItem.h"
-#import "OpenHABWidget.h"
-#import "OpenHABWidgetMapping.h"
+#import "NSObject+Data.h"
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import <SDWebImage/SDWebImageDownloader.h>
