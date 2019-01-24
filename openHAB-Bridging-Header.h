@@ -8,6 +8,7 @@
 #import <MMDrawerController/UIViewController+MMDrawerController.h>
 //#import "NSDate+Helper.h"
 #import <TSMessages/TSMessage.h>
+#import "Reachability.h"
 
 // -----------------------------------------------------------------------------
 // Begin Swiftify generated imports
@@ -27,7 +28,6 @@
 #import "AFRememberingSecurityPolicy.h"
 //#import "NSObject+Data.h"
 #import "OpenHABTracker.h"
-#import "Reachability+URL.h"
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 #import <SDWebImage/SDWebImageDownloader.h>
