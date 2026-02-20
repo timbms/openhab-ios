@@ -184,4 +184,15 @@ public extension String? {
             ""
         }
     }
+
+    var isNilOrEmpty: Bool {
+        self == nil || self == ""
+    }
+}
+
+public extension String {
+    var isNoneIcon: Bool {
+        let pattern = #"^(oh:([a-z]+:)?)?none$"#
+        return range(of: pattern, options: .regularExpression) != nil
+    }
 }

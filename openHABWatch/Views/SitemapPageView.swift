@@ -21,57 +21,11 @@ struct WidgetRowView: View {
     var body: some View {
         if let linkedPage = widget.linkedPage {
             NavigationLink(value: linkedPage) {
-                rowWidget(widget: widget)
+                WidgetRowFactory.make(widget: widget, settings: settings)
             }
             .buttonStyle(.plain)
         } else {
-            rowWidget(widget: widget)
-        }
-    }
-
-    @ViewBuilder func rowWidget(widget: OpenHABWidget) -> some View {
-        switch widget.stateEnum {
-        case .switcher:
-            SwitchRow(widget: widget)
-        case .slider:
-            if widget.switchSupport {
-                SliderRow(widget: widget)
-            } else {
-                SliderWithSwitchSupportRow(widget: widget)
-            }
-        case .segmented:
-            SegmentRow(widget: widget)
-        case .rollershutter:
-            RollershutterRow(widget: widget)
-        case .setpoint:
-            SetpointRow(widget: widget)
-        case .frame:
-            FrameRow(widget: widget)
-        case .image:
-            // Encoded image
-            if widget.item != nil {
-                ImageRawRow(widget: widget)
-            } else {
-                EquatableView(content: ImageRow(url: URL(string: widget.url), refresh: widget.refresh))
-            }
-        case .chart:
-            let url = Endpoint.chart(
-                rootUrl: settings.openHABRootUrl,
-                period: widget.period,
-                type: widget.item?.type ?? .none,
-                service: widget.service,
-                name: widget.item?.name,
-                legend: widget.legend,
-                theme: .dark,
-                forceAsItem: widget.forceAsItem
-            ).url
-            EquatableView(content: ImageRow(url: url, refresh: widget.refresh))
-        case .mapview:
-            MapViewRow(widget: widget)
-        case .colorpicker:
-            ColorPickerRow(widget: widget)
-        default:
-            GenericRow(widget: widget)
+            WidgetRowFactory.make(widget: widget, settings: settings)
         }
     }
 }
@@ -107,7 +61,7 @@ struct SitemapPageView: View {
                     Spacer()
                     ProgressView("Loading sitemap...")
                         .progressViewStyle(CircularProgressViewStyle())
-                        .font(.footnote)
+                        .watchTextStyle(.detail)
                     Spacer()
                 }
             } else if !viewModel.widgets.isEmpty {
@@ -124,7 +78,7 @@ struct SitemapPageView: View {
                                     .progressViewStyle(CircularProgressViewStyle(tint: .secondary))
                                     .scaleEffect(0.7)
                                 Text("Updating...")
-                                    .font(.caption2)
+                                    .watchTextStyle(.secondary)
                                     .foregroundStyle(.secondary)
                                 Spacer()
                             }
@@ -139,7 +93,7 @@ struct SitemapPageView: View {
                 VStack {
                     Spacer()
                     Text("No widgets available.")
-                        .font(.footnote)
+                        .watchTextStyle(.detail)
                         .foregroundStyle(.secondary)
                     Spacer()
                 }

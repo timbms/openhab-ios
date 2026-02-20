@@ -187,8 +187,12 @@ public extension Endpoint {
 
         if source == "if" || source == "iconify" {
             queryItems = [URLQueryItem(name: "height", value: "64")]
-            if !iconColor.isEmpty, let colorString = UIColor(fromString: iconColor).toHex() {
-                queryItems.append(URLQueryItem(name: "color", value: "#\(colorString)"))
+            if !iconColor.isEmpty {
+                let uiColor = UIColor(fromString: iconColor)
+                let colorString = uiColor.hexString
+                if let colorString {
+                    queryItems.append(URLQueryItem(name: "color", value: "#\(colorString)"))
+                }
             }
             if let widgetId {
                 queryItems.append(URLQueryItem(name: "widgetId", value: widgetId))
@@ -206,8 +210,8 @@ public extension Endpoint {
             iconName = "none"
         }
 
-        if staticIcon != true {
-            queryItems.append(URLQueryItem(name: "state", value: state ?? "null"))
+        if staticIcon != true, let state {
+            queryItems.append(URLQueryItem(name: "state", value: state))
         }
 
         queryItems.append(contentsOf: [
